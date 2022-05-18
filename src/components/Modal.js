@@ -7,6 +7,7 @@ export default function Modal({children, handleClose}) {
                 <p>Use the code Hello at the checkout</p> */}
                 {children}
                 <button onClick={handleClose}>Close</button>
+                
             </div>
         </div>
     )

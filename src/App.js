@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 
 function App() {
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
   const [showEvents, setShowEvents] = useState(true)
   const [events, setEvents] = useState([
     {title: 'first title', id:1},
@@ -25,6 +25,8 @@ function App() {
   const handleClose = () => {
     setShowModal(false)
   }
+
+  
   
 
   const subtitle = 'This is a sub-title'
@@ -51,6 +53,9 @@ function App() {
          <h1>Hello world</h1>
          <p>This is simply a text</p>
        </Modal>}
+       <div>
+         <button onClick={() => setShowModal(true)}>Show Modal</button>
+       </div>
     </div>
   );
 }
