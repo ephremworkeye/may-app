@@ -1,5 +1,7 @@
 import './App.css';
+import Title from './components/Title';
 import { useState } from 'react'
+
 
 function App() {
   const [showEvents, setShowEvents] = useState(true)
@@ -15,8 +17,10 @@ function App() {
       })
     })
   }
+  const subtitle = 'This is a sub-title'
   return (
     <div className='App'>
+      <Title title='First title' subtitle={subtitle}/>
       {showEvents && (<div>
         <button onClick={() => {setShowEvents(false)}}>Hide Events</button>
       </div>)}
