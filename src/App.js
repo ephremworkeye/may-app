@@ -1,6 +1,7 @@
 import './App.css';
 import Title from './components/Title';
 import Modal from './components/Modal';
+import EventList from './components/EventList';
 import { useState } from 'react'
 
 
@@ -12,7 +13,6 @@ function App() {
     {title: 'second title', id:2},
     {title: 'third title', id:3},
   ])
-  console.log(showModal)
   const handleClick = (id) => {
     setEvents((preEvents) => {
       return preEvents.filter((event) => {
@@ -33,6 +33,7 @@ function App() {
   return (
     <div className='App'>
       <Title title='First title' subtitle={subtitle}/>
+      
      
       {showEvents && (<div>
         <button onClick={() => {setShowEvents(false)}}>Hide Events</button>
@@ -41,12 +42,8 @@ function App() {
       {!showEvents && (<div>
         <button onClick={() => {setShowEvents(true)}}>Show Events</button>
       </div>)}
-      {showEvents && events.map((event, index) => (
-        <div key={event.id}>
-          <h2>{index}-{ event.title}</h2>
-          <button onClick={() => {handleClick(event.id)}}>delete event</button>
-        </div>
-      ))}
+      {showEvents && <EventList events={events} handleClick={handleClick}/>
+      }
 
        {/* <Modal /> */}
        {showModal && <Modal handleClose={handleClose}>
