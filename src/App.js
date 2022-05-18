@@ -46,8 +46,8 @@ function App() {
       }
 
        {/* <Modal /> */}
-       {showModal && <Modal handleClose={handleClose}>
-         <h1>Hello world</h1>
+       {showModal && <Modal handleClose={handleClose} isSalesModal = {true}>
+         <h2>Hello world</h2>
          <p>This is simply a text</p>
        </Modal>}
        <div>
