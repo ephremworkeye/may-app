@@ -3,16 +3,21 @@ import Title from './components/Title';
 import Modal from './components/Modal';
 import EventList from './components/EventList';
 import { useState } from 'react'
+import NewEventForm from './components/NewEventForm';
 
 
 function App() {
   const [showModal, setShowModal] = useState(false)
   const [showEvents, setShowEvents] = useState(true)
-  const [events, setEvents] = useState([
-    {title: 'first title', id:1},
-    {title: 'second title', id:2},
-    {title: 'third title', id:3},
-  ])
+  const [events, setEvents] = useState([])
+
+  const addEvent = (event) => {
+    setEvents((preEvents)=> {
+      return [...preEvents, event]
+    })
+    setShowModal(false)
+  }
+
   const handleClick = (id) => {
     setEvents((preEvents) => {
       return preEvents.filter((event) => {
@@ -21,13 +26,9 @@ function App() {
     })
   }
 
-  
   const handleClose = () => {
     setShowModal(false)
   }
-
-  
-  
 
   const subtitle = 'This is a sub-title'
   return (
@@ -47,11 +48,10 @@ function App() {
 
        {/* <Modal /> */}
        {showModal && <Modal handleClose={handleClose} isSalesModal = {true}>
-         <h2>Hello world</h2>
-         <p>This is simply a text</p>
+         <NewEventForm addEvent={addEvent} />
        </Modal>}
        <div>
-         <button onClick={() => setShowModal(true)}>Show Modal</button>
+         <button onClick={() => setShowModal(true)}>Add New Event</button>
        </div>
     </div>
   );
